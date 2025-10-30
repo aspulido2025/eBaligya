@@ -100,7 +100,7 @@
     define("SHOP_FOOTER",                           SHOP_INCLUDES . "shopFooter.php");
 
     define("SHOP_PHONE",                         "(63) 991 905.7797");
-    define("SHOP_EMAIL",                         "support@pasalubongcenter.com");
+    define("SHOP_EMAIL",                         "support@crissannshop.com");
     // echo '<p> env ' . $env;
     // echo '<p> urk ' . SHOP_URL;
     // echo '<p> path ' . SHOP_PATH;

@@ -5,34 +5,15 @@
  * Folder: shop/assets/images/products/
  */
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-ob_clean();
-ob_start();
-
-$path = __DIR__ . '/';
-// $path = SHOP_IMAGES ;
-
-// $path = 'http://localhost/ebaligya/public/shop/assets/images/products/' ;
-
+$path = __DIR__ . '/shop/assets/images/products/';
 $file = $_GET['file'] ?? 'default.jpg';
 $width = (int)($_GET['w'] ?? 800);
 $height = (int)($_GET['h'] ?? 500);
 
-// $src = realpath($path . basename($file));
-$src = $path . basename($file);
-
-// echo '<p> path '. $path;
-// echo '<p> file '. basename($file);
-// echo '<p> src ' . $src; 
-
-
+$src = realpath($path . basename($file));
 if (!$src || !file_exists($src)) {
     http_response_code(404);
-    // exit('File not found');
-    header('Content-Type: image/png');
-    readfile(__DIR__ . '/default.png');
-    exit;
+    exit('File not found');
 }
 
 // Allowed sizes for security & consistency

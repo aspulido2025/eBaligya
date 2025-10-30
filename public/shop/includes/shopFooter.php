@@ -48,7 +48,7 @@
                                     <li><span>Monday-Saturday: </span> 8:00 am - 5:00 pm</li>
                                 </ul>
                                 <p class="mail">
-                                    <a href="mailto:support@support@pasalubongcenter.com"><?= SHOP_EMAIL ?></a>
+                                    <a href="mailto:aspulidoconsultancy@gmail.com"><?= SHOP_EMAIL ?></a>
                                 </p>
                             </div>
                             <!-- End Single Widget -->
@@ -81,7 +81,6 @@
                                 <ul>
                                     <li><a href="about-us.php">About Us</a></li>
                                     <li><a href="contact.php">Contact Us</a></li>
-                                    <li><a href="javascript:void(0)">Downloads</a></li>
                                     <li><a href="javascript:void(0)">Sitemap</a></li>
                                     <li><a href="faq.php">FAQs Page</a></li>
                                 </ul>
@@ -91,13 +90,13 @@
                         <div class="col-lg-3 col-md-6 col-12">
                             <!-- Single Widget -->
                             <div class="single-footer f-link">
-                                <h3>Shop Departments</h3>
+                                <h3>Product Categories</h3>
                                 <ul>
-                                    <li><a href="javascript:void(0)">Computers & Accessories</a></li>
-                                    <li><a href="javascript:void(0)">Smartphones & Tablets</a></li>
-                                    <li><a href="javascript:void(0)">TV, Video & Audio</a></li>
-                                    <li><a href="javascript:void(0)">Cameras, Photo & Video</a></li>
-                                    <li><a href="javascript:void(0)">Headphones</a></li>
+                                    <li><a href="javascript:void(0)">Herbal</a></li>
+                                    <li><a href="javascript:void(0)">Cosmetics</a></li>
+                                    <li><a href="javascript:void(0)">Apparrel</a></li>
+                                    <li><a href="javascript:void(0)">Mobile Phones</a></li>
+                                    <li><a href="javascript:void(0)">Others</a></li>
                                 </ul>
                             </div>
                             <!-- End Single Widget -->
