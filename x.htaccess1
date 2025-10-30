@@ -1,0 +1,95 @@
+
+# ==============================================================
+# CRIS ANN PASALUBONG CENTER (crisannshop.com)
+# Production Deployment — Genesis Commerce Stack
+# ==============================================================
+
+# Enable rewrite engine
+RewriteEngine On
+
+# ----------------------------------------------------------------------
+# 1️⃣ FORCE HTTPS
+# ----------------------------------------------------------------------
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ----------------------------------------------------------------------
+# 2️⃣ CANONICAL DOMAIN (non-www)
+# ----------------------------------------------------------------------
+RewriteCond %{HTTP_HOST} ^www\.crisannshop\.com [NC]
+RewriteRule ^(.*)$ https://crisannshop.com/$1 [L,R=301]
+
+# ----------------------------------------------------------------------
+# 3️⃣ ENTRYPOINTS
+# ----------------------------------------------------------------------
+
+# Root → Shop Frontend
+RewriteRule ^$ public/shop/index.php [L]
+
+# /admin → Admin Panel
+RewriteCond %{REQUEST_URI} ^/admin [NC]
+RewriteRule ^admin/?$ public/index.php [L]
+
+# Allow direct access to public assets
+RewriteCond %{REQUEST_URI} ^/public/assets/ [NC]
+RewriteRule ^ - [L]
+
+# ----------------------------------------------------------------------
+# 4️⃣ FRONT CONTROLLER (optional for clean routes)
+# If you later use SEO-friendly URLs like /product/123 or /about-us
+# Uncomment these lines:
+# ----------------------------------------------------------------------
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^shop/(.*)$ public/shop/$1 [L,QSA]
+# RewriteRule ^(.*)$ public/shop/index.php [L,QSA]
+
+# ----------------------------------------------------------------------
+# 5️⃣ SECURITY HARDENING
+# ----------------------------------------------------------------------
+
+# 🚫 Block direct access to internal folders
+RedirectMatch 403 ^/(classes|config|functions|storage|\.git|vendor|tests|docs|backup)
+RedirectMatch 403 (^|/)\.env$
+RedirectMatch 403 (^|/)\.git
+RedirectMatch 403 (^|/)composer\.(json|lock)
+RedirectMatch 403 (^|/)(package|yarn)\.json
+RedirectMatch 403 (^|/)README\.md
+
+# Prevent directory listing
+Options -Indexes
+
+# ----------------------------------------------------------------------
+# 6️⃣ CACHING & PERFORMANCE
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+    # Cache static files for 30 days
+    <FilesMatch "\.(jpg|jpeg|png|gif|svg|webp|css|js|ico|woff2?|ttf|eot|mp4|webm)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+
+    # CORS for fonts
+    <FilesMatch "\.(woff2?|ttf|eot)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 7️⃣ PWA SUPPORT (Manifest & Service Worker)
+# ----------------------------------------------------------------------
+<Files "sw.js">
+    Header set Service-Worker-Allowed "/"
+</Files>
+<Files "manifest.json">
+    Header set Content-Type "application/manifest+json"
+</Files>
+
+# ----------------------------------------------------------------------
+# 8️⃣ DEFAULT DOCUMENTS
+# ----------------------------------------------------------------------
+DirectoryIndex index.php index.html
+
+# ==============================================================
+# END OF FILE
+# ==============================================================
+
