@@ -1,0 +1,7 @@
+SELECT system_vendors.*,
+            system_users.fullname AS encoder
+        FROM system_vendors 
+            LEFT JOIN system_users ON system_users.id = system_vendors.created_id 
+         WHERE DATE(system_vendors.created) BETWEEN ? AND ? 
+        ORDER BY system_vendors.created desc 
+        LIMIT 0, 25

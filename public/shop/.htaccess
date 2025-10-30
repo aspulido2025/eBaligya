@@ -1,0 +1,25 @@
+# -------------------------------------
+# PWA & static file handler for /shop
+# -------------------------------------
+RewriteEngine On
+
+# Serve correct MIME types
+AddType application/manifest+json .webmanifest .json
+AddType text/javascript .js
+AddType text/css .css
+
+# Cache static assets for performance
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType application/manifest+json "access plus 1 week"
+</IfModule>
+
+# Offline support for PWA (client-side routing)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
