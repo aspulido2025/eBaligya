@@ -19,7 +19,7 @@ $finalTitle  = defined('PROJECT')
     <title><?= htmlspecialchars($finalTitle) ?></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="<?= SHOP_URL . '/assets/images/favicon.svg' ?>" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?= SHOP_URL . '/assets/images/favicon.ico' ?>" />
 
     <!-- ========================= CSS here ========================= -->
     <link rel="stylesheet" href="<?= SHOP_URL . '/assets/css/bootstrap.min.css' ?>" />

@@ -66,9 +66,9 @@
     // BROWSER-FACING 🌍
     // BASE_URL (HTML src, href, meta, etc.)
     define("FOLDER_IMAGES",                         BASE_URL . "/theme/images/");
-    define("FAVICON",                               FOLDER_IMAGES . "favicon.png");
+    define("FAVICON",                               FOLDER_IMAGES . "favicon.ico");
     define("SITE_LOGO",                             FOLDER_IMAGES . "site_logo.png");
-    define("SITE_TEXT_LOGO",                        FOLDER_IMAGES . "site_text.png");
+    define("SITE_TEXT_LOGO",                        FOLDER_IMAGES . "site_text_logo.png");
     define("AUTHOR_IMAGE",                          FOLDER_IMAGES . "author.png");
     define("DEFAULT_AVATAR",                        FOLDER_IMAGES . "default_avatar.png");
 

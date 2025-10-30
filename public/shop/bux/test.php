@@ -40,33 +40,66 @@ curl_setopt_array($ch, [
     CURLOPT_POSTFIELDS => json_encode($payload)
 ]);
 
+
 $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 $err = curl_error($ch);
 curl_close($ch);
 
-// === 5. LOGGING ===
-$logData = date('Y-m-d H:i:s') . " | HTTP $httpCode\n" . $response . "\n\n";
-file_put_contents(__DIR__ . '/bux_test.log', $logData, FILE_APPEND);
 
-// === 6. OUTPUT ===
-header('Content-Type: application/json');
+// ====================
 
+// === 5. HANDLE RESPONSE ===
 if ($err) {
-    echo json_encode(['status' => 'error', 'message' => $err], JSON_PRETTY_PRINT);
+    die("Curl Error: " . htmlspecialchars($err));
+}
+
+$data = json_decode($response, true);
+$checkoutUrl = $data['checkout_url'] ?? ($data['response']['checkout_url'] ?? null);
+
+// === 6. REDIRECT ON SUCCESS ===
+if ($httpCode === 200 && !empty($checkoutUrl)) {
+    // Optional: log to file
+    file_put_contents(__DIR__ . '/bux_test.log', date('Y-m-d H:i:s') . " | Redirect to $checkoutUrl\n", FILE_APPEND);
+
+    // Redirect browser to BUX checkout
+    header("Location: " . $checkoutUrl);
     exit;
 }
 
-if ($httpCode !== 200) {
-    echo json_encode([
-        'status' => 'fail',
-        'http_code' => $httpCode,
-        'response' => json_decode($response, true)
-    ], JSON_PRETTY_PRINT);
-    exit;
-}
-
+// === 7. FALLBACK (show raw output if error) ===
+header('Content-Type: application/json');
 echo json_encode([
-    'status' => 'success',
-    'response' => json_decode($response, true)
+    'status' => 'fail',
+    'http_code' => $httpCode,
+    'response' => $data
 ], JSON_PRETTY_PRINT);
+
+
+// ====================
+
+// // === 5. LOGGING ===
+// $logData = date('Y-m-d H:i:s') . " | HTTP $httpCode\n" . $response . "\n\n";
+// file_put_contents(__DIR__ . '/bux_test.log', $logData, FILE_APPEND);
+
+// // === 6. OUTPUT ===
+// header('Content-Type: application/json');
+
+// if ($err) {
+//     echo json_encode(['status' => 'error', 'message' => $err], JSON_PRETTY_PRINT);
+//     exit;
+// }
+
+// if ($httpCode !== 200) {
+//     echo json_encode([
+//         'status' => 'fail',
+//         'http_code' => $httpCode,
+//         'response' => json_decode($response, true)
+//     ], JSON_PRETTY_PRINT);
+//     exit;
+// }
+
+// echo json_encode([
+//     'status' => 'success',
+//     'response' => json_decode($response, true)
+// ], JSON_PRETTY_PRINT);

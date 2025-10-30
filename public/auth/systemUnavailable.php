@@ -34,7 +34,7 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-12">
                         <div class="form-input-content text-center error-page">
-                            <img src="<?php echo SITE_TEXT_LOGO; ?>" alt="TextLogo" width="500">
+                        <img src="<?php echo SITE_TEXT_LOGO; ?>" alt="TextLogo" height="100">
                             <?php 
                                 echo "<p><br><h3><b>SYSTEM IS TEMPORARILY UNAVAILABLE!</b></h3>Please try again later.<br> If the issue persist, please contact the System Administrator." ; 
                                 

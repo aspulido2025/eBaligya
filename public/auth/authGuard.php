@@ -66,7 +66,7 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-12">
                     <div class="form-input-content text-center error-page">
-                        <img src="<?php echo SITE_TEXT_LOGO; ?>" alt="TextLogo" width="500">
+                        <img src="<?php echo SITE_TEXT_LOGO; ?>" alt="TextLogo" height="100">
                          <?php 
                             echo "<p><br><h3><b>" . $index_reason . "</b></h3>" . $index_dothis; 
                             if (isset($_COOKIE[COOKIE_HANDLE])) {

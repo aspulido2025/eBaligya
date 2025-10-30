@@ -74,7 +74,7 @@
                     <div class="col-lg-3 col-md-3 col-7">
                         <!-- Start Header Logo -->
                         <a class="navbar-brand" href="index.php">
-                            <img src="<?= SHOP_URL . '/assets/images/logo/logo.png' ?>" alt="Logo">
+                            <img src="<?= SHOP_URL . '/assets/images/logo/logo_full.png' ?>" alt="Logo">
                         </a>
                         <!-- End Header Logo -->
                     </div>
@@ -169,7 +169,7 @@
                                                 <span class="total-amount">$134.00</span>
                                             </div>
                                             <div class="button">
-                                                <a href="checkout.php" class="btn animate">Checkout</a>
+                                                <a href="<?= SHOP_URL . '/checkout.php' ?>" class="btn animate">Checkout</a>
                                             </div>
                                         </div>
                                     </div>

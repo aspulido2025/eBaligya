@@ -9,7 +9,7 @@
                         <div class="col-lg-3 col-md-4 col-12">
                             <div class="footer-logo">
                                 <a href="index.php">
-                                    <img src="<?= SHOP_URL . '/assets/images/logo/logo.png' ?>" alt="#">
+                                    <img src="<?= SHOP_URL . '/assets/images/logo/logo_full.png' ?>" alt="#">
                                 </a>
                             </div>
                         </div>

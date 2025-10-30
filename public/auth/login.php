@@ -23,7 +23,7 @@
                     <div class="card mb-0 h-auto">
                         <div class="card-body">
                             <div class="text-center mb-5">
-                                <a href="javascript:void(0)" class="text-center db"><img src="<?php echo SITE_LOGO; ?>" alt="Home" width="150"/>
+                                <a href="javascript:void(0)" class="text-center db"><img src="<?php echo SITE_TEXT_LOGO; ?>" alt="Home" height="75"/>
                                 <hr/>
                                 <?php getNotice($what, $note, $when); ?>
                             </div>

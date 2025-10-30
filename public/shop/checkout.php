@@ -366,7 +366,7 @@
                                 </div>
                             </div>
                             <div class="price-table-btn button">
-                                <a href="javascript:void(0)" class="btn btn-alt">Checkout</a>
+                                <a href="<?= SHOP_URL . '/bux/test.php' ?>" class="btn btn-alt">Checkout Sandbox</a>
                             </div>
                         </div>
                         <div class="checkout-sidebar-banner mt-30">

@@ -2,8 +2,7 @@
     <!-- SITE LOGO -->
     <div class="nav-header bg-success">
         <a href="<?php echo BASE_URL . '/index.php'; ?>" class="brand-logo">
-            <img src="<?php echo SITE_LOGO; ?>" alt="Dashboard" height="50" class="dark-logo" />
-            <img src="<?php echo SITE_TEXT_LOGO; ?>" alt="Dashboard" height="30" class="dark-logo" />
+            <img src="<?php echo SITE_LOGO; ?>" alt="Dashboard" height="45" class="dark-logo" />CAS
         </a>
         <div class="nav-control">
             <div class="hamburger">
@@ -11,9 +10,6 @@
             </div>
         </div>
     </div>
-    
-
-
         
         <!--**********************************
             Header start
