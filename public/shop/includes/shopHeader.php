@@ -40,7 +40,7 @@
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="top-middle">
                             <ul class="useful-links">
-                                <li><a href="<?= SHOP_URL ?>">Home</a></li>
+                                <li><a href="<?= SHOP_URL . '/home.php' ?>">Home</a></li>
                                 <li><a href="<?= SHOP_URL . '/about-us.php' ?>">About Us</a></li>
                                 <li><a href="<?= SHOP_URL . '/contact.php' ?>">Contact Us</a></li>
                             </ul>
@@ -213,7 +213,7 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a href="index.php" class="active" aria-label="Toggle navigation">Home</a>
+                                        <a href="<?= SHOP_URL . '/home.phpphp' ?>" class="active" aria-label="Toggle navigation">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
@@ -233,7 +233,7 @@
                                             data-bs-target="#submenu-1-3" aria-controls="navbarSupportedContent"
                                             aria-expanded="false" aria-label="Toggle navigation">Shop</a>
                                         <ul class="sub-menu collapse" id="submenu-1-3">
-                                            <li class="nav-item"><a href="<?= SHOP_URL . '/product-grids.php' ?>">Shop Grid</a></li>
+                                            <li class="nav-item"><a href="<?= SHOP_URL . '/index.php' ?>">Shop Grid</a></li>
                                             <li class="nav-item"><a href="<?= SHOP_URL . '/product-list.php' ?>">Shop List</a></li>
                                             <li class="nav-item"><a href="<?= SHOP_URL . '/product-details.php' ?>">shop Single</a></li>
                                             <li class="nav-item"><a href="<?= SHOP_URL . '/cart.php' ?>">Cart</a></li>

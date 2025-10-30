@@ -61,9 +61,9 @@
 
                                 <br>
                     <span><?php echo "<b>" . PROJECT . ' ' . TITLE . "</b>"; ?></span>
-                    <span><br><?php echo trim(strstr(VERSION, '+', true) ?: VERSION)."<br>"; ?></span>
-                    <span><?php echo COPYRIGHT.date('Y')."<br>"; ?></span>
-                    <span><a href="javascript:void(0);" class="text-dark fw-medium"><?php echo AUTHOR; ?></a>, All Rights Reserved.</span>
+                    <span><?php echo trim(strstr(VERSION, '+', true) ?: VERSION)."<br>"; ?></span>
+                    <span><?php echo COPYRIGHT.date('Y'); ?></span>
+                    <span><a href="javascript:void(0);"><?php echo AUTHOR; ?></a><br>All Rights Reserved.</span>
                             </div>
                         </div>
                     </div>
