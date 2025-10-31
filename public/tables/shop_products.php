@@ -56,11 +56,11 @@
                                                 <th class="dt-head-right">#</th>
                                                 <th width="20%">Product Description</th>
                                                 <th width="15%">Category</th>
-                                                <th width="20%">SKU</th>
-                                                <th class="text-center">Weight</th>
-                                                <th class="text-center">On Sale</th>
-                                                <th class="text-center">S.R.P.</th>
-                                                <th class="dt-head-right">Encoder<br>Timestamp</th>
+                                                <th>SKU<br>Weight</th>
+                                                <th class="dt-head-right">S.R.P.</th>
+                                                <th class="dt-head-right">On Sale</th>
+                                                <th class="dt-head-right">Sale Price</th>
+                                                <th width="15%" class="dt-head-right">Encoder<br>Timestamp</th>
                                                 <th class="text-center">Action(s)</th>
                                             </tr>
                                         </thead>
@@ -74,9 +74,14 @@
                                                 //         LEFT JOIN rbac_roles On rbac_roles.id = rbac_user_roles.role_id 
                                                 //         LEFT JOIN system_users On system_users.id = shop_products.updated_by   ";
 
-                                                $sql = "SELECT shop_products.*, system_users.fullname AS encoder
+                                                $sql = "SELECT shop_products.*,
+                                                            universal_lookup.description As category,
+                                                            system_users.fullname As encoder
                                                         FROM shop_products 
-                                                        LEFT JOIN system_users On system_users.id = shop_products.updated_by ";
+                                                        INNER JOIN universal_lookup On universal_lookup.value = shop_products.category_id 
+                                                        LEFT JOIN system_users On system_users.id = shop_products.updated_by
+                                                        WHERE universal_lookup.category = 'PRODUCT CATEGORY'";
+
                                                     // if ($defaultUserRole < 999) {
                                                     //     $sql .=  "WHERE rbac_user_roles.role_id = '$defaultUserRole' ";
                                                     // }
@@ -88,19 +93,17 @@
                                                     echo ("<tr><td class='dt-body-right'></td>");
 
                                                     echo ("<td><b>".$row['product_name']."</b><br>"
-                                                        .'<i><font color=blue>'.$row['description'].'</font></i><br>'
-                                                        
+                                                        .'<i><font color=blue>'.substr($row['description'],0,25).'</font></i><br>'
                                                         .($row['is_active']==0 ? "<small class='text-danger'><i class='ti-na'></i>&nbsp;Not Available</small>": "")."</td>");
                                                     
-                                                    echo ("<td >".$row['category_id']."</td>");
-													echo ("<td>".$row['sku']."</td>");
+                                                    echo ("<td>".$row['category']."</td>");
+													echo ("<td>".$row['sku']."<br><small class='text-primary'>".$row['weight_g']." Kg.</small></td>");
+													echo ("<td class='dt-body-right'><b>".$row['srp']."</b></td>");
                                                     
-													echo ("<td>".$row['weight_g']."</td>");
+													echo ("<td class='dt-body-right'>".($row['is_on_sale']==0 ? "<small class='text-primary'><i class='ti-na'></i>&nbsp;No</small>" : 
+                                                            "<small class='text-warning'><i class='ti-check'></i>&nbsp;Yes</small>")."</td>");
                                                     
-													echo ("<td>".($row['is_on_sale']==0 ? "<small class='text-primary'><i class='ti-na'></i>&nbsp;No</small>" : 
-                                                            "<small class='text-danger'><i class='ti-na'></i>&nbsp;Yes</small>")."</td>");
-                                                    
-													echo ("<td>".$row['srp']."</td>");
+													echo ("<td class='dt-body-right'>".$row['sale_price']."</td>");
 
                                                     // Latest Update
                                                     echo ("<td class='dt-body-right' data-order='{$row['updated_at']}'>".
@@ -209,7 +212,6 @@
                     cell.innerHTML = i+1;
                 });
             }).draw();
-            // $('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass('btn btn-primary me-1');
         });
     </script>
 </body>
