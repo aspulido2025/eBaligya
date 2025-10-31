@@ -1,5 +1,19 @@
 <?php 
     require __DIR__ . '/../../config/init.php';
+
+    // Classes
+    use App\Classes\DB;
+    $db = new DB($pdo);
+
+    // Product Categories
+    $sql = "SELECT value, description FROM universal_lookup WHERE category = 'PRODUCT CATEGORY' ORDER BY description ";
+    $productCategorySet = $db->fetch($sql, [], [], 'all');
+
+    // Products
+    $sql = "SELECT shop_products.* FROM shop_products ";
+    $productSet = $db->fetch($sql, [], [], 'all');
+
+    // SEO
     include SHOP_META;
 ?>
     
@@ -48,21 +62,13 @@
                         <div class="single-widget">
                             <h3>All Categories</h3>
                             <ul class="list">
-                                <li>
-                                    <a href="product-grids.html">Herbal Products </a><span>(18)</span>
-                                </li>
-                                <li>
-                                    <a href="product-grids.html">Cosmetics</a><span>(26)</span>
-                                </li>
-                                <li>
-                                    <a href="product-grids.html">Apparrel</a><span>(420)</span>
-                                </li>
-                                <li>
-                                    <a href="product-grids.html">Mobile Phones</a><span>(4)</span>
-                                </li>
-                                <li>
-                                    <a href="product-grids.html">Others</a><span>(1239)</span>
-                                </li>
+                                <?php 
+                                    foreach ($productCategorySet as $row) {
+                                        echo ("<li>");
+                                            echo ("<a href='product-grids.html'>".$row['description']."</a><span>(18)</span>");
+                                        echo ("</li>");
+                                    }
+                                ?>
                             </ul>
                         </div>
                         <!-- End Single Widget -->
@@ -106,8 +112,45 @@
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade" id="nav-grid" role="tabpanel" aria-labelledby="nav-grid-tab">
                                 <div class="row">
+                                    <!-- <?php 
+                                        foreach ($productSet as $row) {
+                                            
+                                            echo ("<div class='col-lg-12 col-md-12 col-12'>");
+                                                echo ("<div class='single-product'>");
+                                                    echo ("<div class='row align-items-center'>");
+                                                        echo ("<div class='col-lg-4 col-md-4 col-12'>");
+                                                            echo ("<div class='product-image'>");
+                                                                $image = "/resize.php?file=".$row['image']."&w=335&h=335";
+                                                                echo ("<img src='". SHOP_IMAGES . $image. "' alt='#'>");
+                                                                echo ("<div class='button'>");
+                                                                    echo ("<a href='product-details.php' class='btn'><i class='lni lni-cart'></i> Add to Cart</a>");
+                                                                echo ("</div>");
+                                                            echo ("</div>");
+                                                        echo ("</div>");
+                                                        echo ("<div class='col-lg-8 col-md-8 col-12'>");
+                                                            echo ("<div class='product-info'>");
+                                                                echo ("<span class='category'>".$row['category_id']."</span>");
+                                                                echo ("<h4 class='title'>");
+                                                                    echo("<a href='product-grids.html'>".$row['product_name']."</a>");
+                                                                echo ("</h4>");echo ("<ul class='review'>");
+                                                                    echo ("<li><i class='lni lni-star-filled'></i></li>");
+                                                                    echo ("<li><i class='lni lni-star-filled'></i></li>");
+                                                                    echo ("<li><i class='lni lni-star-filled'></i></li>");
+                                                                    echo ("<li><i class='lni lni-star-filled'></i></li>");
+                                                                    echo ("<li><i class='lni lni-star'></i></li>");
+                                                                    echo ("<li><span>4.0 Review(s)</span></li>");
+                                                                echo ("</ul>");
+                                                                echo ("<div class='price'>");
+                                                                    echo ("<span>".$row['srp']."</span>");
+                                                                echo ("</div>");
+                                                            echo ("</div>");
+                                                        echo ("</div>");
+                                                    echo ("</div>");
+                                                echo ("</div>");
+                                            echo ("</div>");
+                                        }
+                                    ?> -->
                                     <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- Start Single Product -->
                                         <div class="single-product">
                                             <div class="product-image">
                                                 <img src="https://placehold.co/335x335" alt="#">
@@ -136,270 +179,8 @@
                                         </div>
                                         <!-- End Single Product -->
                                     </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- Start Single Product -->
-                                        <div class="single-product">
-                                            <div class="product-image">
-                                                <img src="https://placehold.co/335x335" alt="#">
-                                                <span class="sale-tag">-25%</span>
-                                                <div class="button">
-                                                    <a href="product-details.php" class="btn"><i
-                                                            class="lni lni-cart"></i> Add to Cart</a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <span class="category">Speaker</span>
-                                                <h4 class="title">
-                                                    <a href="product-grids.html">Bluetooth Speaker</a>
-                                                </h4>
-                                                <ul class="review">
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><span>5.0 Review(s)</span></li>
-                                                </ul>
-                                                <div class="price">
-                                                    <span>$275.00</span>
-                                                    <span class="discount-price">$300.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Single Product -->
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- Start Single Product -->
-                                        <div class="single-product">
-                                            <div class="product-image">
-                                                <img src="https://placehold.co/335x335" alt="#">
-                                                <div class="button">
-                                                    <a href="product-details.php" class="btn"><i
-                                                            class="lni lni-cart"></i> Add to Cart</a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <span class="category">Camera</span>
-                                                <h4 class="title">
-                                                    <a href="product-grids.html">WiFi Security Camera</a>
-                                                </h4>
-                                                <ul class="review">
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><span>5.0 Review(s)</span></li>
-                                                </ul>
-                                                <div class="price">
-                                                    <span>$399.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Single Product -->
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- Start Single Product -->
-                                        <div class="single-product">
-                                            <div class="product-image">
-                                                <img src="https://placehold.co/335x335" alt="#">
-                                                <span class="new-tag">New</span>
-                                                <div class="button">
-                                                    <a href="product-details.php" class="btn"><i
-                                                            class="lni lni-cart"></i> Add to Cart</a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <span class="category">Phones</span>
-                                                <h4 class="title">
-                                                    <a href="product-grids.html">iphone 6x plus</a>
-                                                </h4>
-                                                <ul class="review">
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><span>5.0 Review(s)</span></li>
-                                                </ul>
-                                                <div class="price">
-                                                    <span>$400.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Single Product -->
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- Start Single Product -->
-                                        <div class="single-product">
-                                            <div class="product-image">
-                                                <img src="https://placehold.co/335x335" alt="#">
-                                                <div class="button">
-                                                    <a href="product-details.php" class="btn"><i
-                                                            class="lni lni-cart"></i> Add to Cart</a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <span class="category">Headphones</span>
-                                                <h4 class="title">
-                                                    <a href="product-grids.html">Wireless Headphones</a>
-                                                </h4>
-                                                <ul class="review">
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><span>5.0 Review(s)</span></li>
-                                                </ul>
-                                                <div class="price">
-                                                    <span>$350.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Single Product -->
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- Start Single Product -->
-                                        <div class="single-product">
-                                            <div class="product-image">
-                                                <img src="https://placehold.co/335x335" alt="#">
-                                                <div class="button">
-                                                    <a href="product-details.php" class="btn"><i
-                                                            class="lni lni-cart"></i> Add to Cart</a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <span class="category">Speaker</span>
-                                                <h4 class="title">
-                                                    <a href="product-grids.html">Mini Bluetooth Speaker</a>
-                                                </h4>
-                                                <ul class="review">
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star"></i></li>
-                                                    <li><span>4.0 Review(s)</span></li>
-                                                </ul>
-                                                <div class="price">
-                                                    <span>$70.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Single Product -->
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- Start Single Product -->
-                                        <div class="single-product">
-                                            <div class="product-image">
-                                                <img src="https://placehold.co/335x335" alt="#">
-                                                <span class="sale-tag">-50%</span>
-                                                <div class="button">
-                                                    <a href="product-details.php" class="btn"><i
-                                                            class="lni lni-cart"></i> Add to Cart</a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <span class="category">Headphones</span>
-                                                <h4 class="title">
-                                                    <a href="product-grids.html">Wireless Headphones</a>
-                                                </h4>
-                                                <ul class="review">
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star"></i></li>
-                                                    <li><span>4.0 Review(s)</span></li>
-                                                </ul>
-                                                <div class="price">
-                                                    <span>$100.00</span>
-                                                    <span class="discount-price">$200.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Single Product -->
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- Start Single Product -->
-                                        <div class="single-product">
-                                            <div class="product-image">
-                                                <img src="https://placehold.co/335x335" alt="#">
-                                                <div class="button">
-                                                    <a href="product-details.php" class="btn"><i
-                                                            class="lni lni-cart"></i> Add to Cart</a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <span class="category">Laptop</span>
-                                                <h4 class="title">
-                                                    <a href="product-grids.html">Apple MacBook Air</a>
-                                                </h4>
-                                                <ul class="review">
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><span>5.0 Review(s)</span></li>
-                                                </ul>
-                                                <div class="price">
-                                                    <span>$899.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Single Product -->
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <!-- Start Single Product -->
-                                        <div class="single-product">
-                                            <div class="product-image">
-                                                <img src="https://placehold.co/335x335" alt="#">
-                                                <span class="sale-tag">-25%</span>
-                                                <div class="button">
-                                                    <a href="product-details.php" class="btn"><i
-                                                            class="lni lni-cart"></i> Add to Cart</a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <span class="category">Speaker</span>
-                                                <h4 class="title">
-                                                    <a href="product-grids.html">Bluetooth Speaker</a>
-                                                </h4>
-                                                <ul class="review">
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><i class="lni lni-star-filled"></i></li>
-                                                    <li><span>5.0 Review(s)</span></li>
-                                                </ul>
-                                                <div class="price">
-                                                    <span>$275.00</span>
-                                                    <span class="discount-price">$300.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Single Product -->
-                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <!-- Pagination -->
-                                        <div class="pagination left">
-                                            <ul class="pagination-list">
-                                                <li><a href="javascript:void(0)">1</a></li>
-                                                <li class="active"><a href="javascript:void(0)">2</a></li>
-                                                <li><a href="javascript:void(0)">3</a></li>
-                                                <li><a href="javascript:void(0)">4</a></li>
-                                                <li><a href="javascript:void(0)"><i
-                                                            class="lni lni-chevron-right"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <!--/ End Pagination -->
-                                    </div>
-                                </div>
+
                             </div>
                             <div class="tab-pane show active fade" id="nav-list" role="tabpanel"
                                 aria-labelledby="nav-list-tab">

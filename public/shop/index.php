@@ -11,7 +11,10 @@
     $productCategorySet = $db->fetch($sql, [], [], 'all');
 
     // Products
-    $sql = "SELECT shop_products.* FROM shop_products ";
+    $sql = "SELECT shop_products.*, universal_lookup.description as category 
+            FROM shop_products 
+            INNER JOIN universal_lookup ON universal_lookup.value = shop_products.category_id
+            WHERE universal_lookup.category = 'PRODUCT CATEGORY'";
     $productSet = $db->fetch($sql, [], [], 'all');
 
     // SEO
@@ -112,8 +115,7 @@
                             </div>
                         </div>
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-grid" role="tabpanel"
-                                aria-labelledby="nav-grid-tab">
+                            <div class="tab-pane fade show active" id="nav-grid" role="tabpanel" aria-labelledby="nav-grid-tab">
                                 <div class="row">
                                     <?php 
                                         foreach ($productSet as $row) {
@@ -123,11 +125,11 @@
                                                         $image = "/resize.php?file=".$row['image']."&w=335&h=335";
                                                         echo ("<img src='". SHOP_IMAGES . $image. "' alt='#'>");
                                                         echo ("<div class='button'>");
-                                                            echo ("<a href='product-details.php' class='btn'><i class='lni lni-cart'></i> Add to Cart</a>");
+                                                            echo ("<a href='product-details.php?id=$row[id]' class='btn'><i class='lni lni-cart'></i> Add to Cart</a>");
                                                         echo ("</div>");
                                                     echo ("</div>");
                                                     echo ("<div class='product-info'>");
-                                                        echo ("<span class='category'>".$row['category_id']."</span>");
+                                                        echo ("<span class='category'>".$row['category']."</span>");
                                                         echo ("<h4 class='title'>");
                                                             echo("<a href='product-grids.html'>".$row['product_name']."</a>");
                                                         echo("</h4>");
@@ -137,7 +139,7 @@
                                                             echo ("<li><i class='lni lni-star-filled'></i></li>");
                                                             echo ("<li><i class='lni lni-star-filled'></i></li>");
                                                             echo ("<li><i class='lni lni-star'></i></li>");
-                                                            echo ("<li><span>4.0 Review(s)</span></li>");
+                                                            echo ("<li><span>4.0 Rating</span></li>");
                                                         echo ("</ul>");
                                                         echo ("<div class='price'>");
                                                             echo ("<span>".$row['srp']."</span>");
@@ -158,15 +160,16 @@
                                                     echo ("<div class='row align-items-center'>");
                                                         echo ("<div class='col-lg-4 col-md-4 col-12'>");
                                                             echo ("<div class='product-image'>");
-                                                                echo ("<img src='https://placehold.co/335x335' alt='#'>");
+                                                                $image = "/resize.php?file=".$row['image']."&w=335&h=335";
+                                                                echo ("<img src='". SHOP_IMAGES . $image. "' alt='#'>");
                                                                 echo ("<div class='button'>");
-                                                                    echo ("<a href='product-details.php' class='btn'><i class='lni lni-cart'></i> Add to Cart</a>");
+                                                                    echo ("<a href='product-details.php?id=$row[id]' class='btn'><i class='lni lni-cart'></i> Add to Cart</a>");
                                                                 echo ("</div>");
                                                             echo ("</div>");
                                                         echo ("</div>");
                                                         echo ("<div class='col-lg-8 col-md-8 col-12'>");
                                                             echo ("<div class='product-info'>");
-                                                                echo ("<span class='category'>".$row['category_id']."</span>");
+                                                                echo ("<span class='category'>".$row['category']."</span>");
                                                                 echo ("<h4 class='title'>");
                                                                     echo("<a href='product-grids.html'>".$row['product_name']."</a>");
                                                                 echo ("</h4>");echo ("<ul class='review'>");
@@ -175,7 +178,7 @@
                                                                     echo ("<li><i class='lni lni-star-filled'></i></li>");
                                                                     echo ("<li><i class='lni lni-star-filled'></i></li>");
                                                                     echo ("<li><i class='lni lni-star'></i></li>");
-                                                                    echo ("<li><span>4.0 Review(s)</span></li>");
+                                                                    echo ("<li><span>4.0 Rating</span></li>");
                                                                 echo ("</ul>");
                                                                 echo ("<div class='price'>");
                                                                     echo ("<span>".$row['srp']."</span>");

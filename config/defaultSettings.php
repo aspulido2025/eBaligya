@@ -54,7 +54,7 @@
 
             define('BASE_URL', 'https://crisannshop.com');
             define("BASE_PATH", dirname(__DIR__));
-            define("SHOP_URL", "https://crisannshop.com/shop");
+            define("SHOP_URL", "https://crisannshop.com/public/shop");
             define("SHOP_PATH", dirname(__DIR__));
             define("SHOP_IMAGES", BASE_URL . "/shop/assets/images/products");
             break;

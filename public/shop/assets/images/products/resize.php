@@ -10,6 +10,7 @@ ini_set('display_errors', 1);
 ob_clean();
 ob_start();
 
+
 $path = __DIR__ . '/';
 // $path = SHOP_IMAGES ;
 
@@ -46,6 +47,7 @@ $allowed_sizes = [
     [620, 340],
     [730, 310],
     [800, 500],
+    [1000, 670]
 ];
 
 $allowed = false;
