@@ -41,7 +41,7 @@
                 <div class="col-lg-6 col-md-12 col-12">
                     <!-- content-1 start -->
                     <div class="content-right">
-                        <h2>ShopGrids - Your Trusted & Reliable Partner.</h2>
+                        <h2>CrisAnn Shop - Your Trusted & Reliable Partner.</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus
                             pellentesque faucibus a quis eros. In eu fermentum leo. Integer ut eros lacus. Proin ut
                             accumsan leo. Morbi vitae est eget dolor consequat aliquam eget quis dolor. Mauris rutrum
@@ -78,8 +78,8 @@
                         </div>
                         <div class="content">
                             <div class="info">
-                                <h3>Grace Wright</h3>
-                                <h5>Founder, CEO</h5>
+                                <h3>Cristy Max</h3>
+                                <h5>Finance Manager</h5>
                                 <ul class="social">
                                     <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a>
                                     </li>
@@ -101,8 +101,8 @@
                         </div>
                         <div class="content">
                             <div class="info">
-                                <h3>Taylor Jackson</h3>
-                                <h5>Financial Director</h5>
+                                <h3>Hazel Quibs</h3>
+                                <h5>Shop Manager</h5>
                                 <ul class="social">
                                     <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a>
                                     </li>
@@ -124,8 +124,8 @@
                         </div>
                         <div class="content">
                             <div class="info">
-                                <h3>Quinton Cross</h3>
-                                <h5>Marketing Director</h5>
+                                <h3>Sherwin Ems</h3>
+                                <h5>Customer Relations Manager</h5>
                                 <ul class="social">
                                     <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a>
                                     </li>
@@ -147,8 +147,8 @@
                         </div>
                         <div class="content">
                             <div class="info">
-                                <h3>Liana Mullen</h3>
-                                <h5>Lead Designer</h5>
+                                <h3>Mar Wins</h3>
+                                <h5>Stocks Manager</h5>
                                 <ul class="social">
                                     <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a>
                                     </li>

@@ -1,5 +1,15 @@
 RewriteEngine On
 
+# ==========================================
+# Custom Error Documents (Hostinger-compatible)
+# ==========================================
+ErrorDocument 400 /public/errors/400.html
+ErrorDocument 401 /public/errors/401.html
+ErrorDocument 403 /public/errors/403.html
+ErrorDocument 404 /public/errors/404.html
+ErrorDocument 500 /public/errors/500.html
+
+
 # Send only the bare domain (no path) to the shop index
 RewriteRule ^$ public/shop/index.php [L]
 
